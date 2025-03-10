@@ -42,12 +42,9 @@ Pygments==2.19.1
 pyinstaller==6.11.1
 pyinstaller-hooks-contrib==2025.1
 pyparsing==3.2.1
-pypiwin32==223
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 pytz==2025.1
-pywin32==308
-pywin32-ctypes==0.2.3
 requests==2.32.3
 setuptools==75.8.0
 sh==2.2.1
