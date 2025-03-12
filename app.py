@@ -8,9 +8,9 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.db'
 db = SQLAlchemy(app)
 
-@app.route("/")
-def home():
-    return "Hello, Railway!"
+# @app.route("/")
+# def home():
+#     return "Hello, Railway!"
 
 class StudentPoints(db.Model):
     id = db.Column(db.Integer, primary_key=True)
