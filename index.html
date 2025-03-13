@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Pontos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Registro de Pontos</h1>
+
+        <div class="card shadow p-4">
+            <form method="post">
+                <div class="mb-3">
+                    <label class="form-label">Nome do Aluno:</label>
+                    <input type="text" name="student_name" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Nome do Professor:</label>
+                    <input type="text" name="teacher_name" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Data:</label>
+                    <input type="date" name="date" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Motivo:</label>
+                    <select name="reason" class="form-control" required>
+                        {% for reason in allowed_reasons %}
+                            <option value="{{ reason }}">{{ reason }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+
+                <div class="mb-3">
+                    <label class="form-label">Turma:</label>
+                    <input type="text" name="class_name" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Equipe:</label>
+                    <select name="team" class="form-control" required>
+                        {% for team in allowed_teams %}
+                            <option value="{{ team }}">{{ team }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+
+                <div class="mb-3">
+                    <label class="form-label">Pontos:</label>
+                    <input type="number" name="points" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Enviar</button>
+            </form>
+        </div>
+        <a href="{{ url_for('leaderboard') }}" class="btn btn-primary">Ver Placar das Equipes</a>
+
+        <h2 class="text-center mt-5">Registros</h2>
+        <table class="table table-striped mt-3 shadow">
+            <thead class="table-dark">
+                <tr>
+                    <th>Aluno</th>
+                    <th>Professor</th>
+                    <th>Data</th>
+                    <th>Motivo</th>
+                    <th>Turma</th>
+                    <th>Equipe</th>
+                    <th>Pontos</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in entries %}
+                    <tr>
+                        <td>{{ entry.student_name }}</td>
+                        <td>{{ entry.teacher_name }}</td>
+                        <td>{{ entry.date.strftime('%d/%m/%Y') }}</td>
+                        <td>{{ entry.reason }}</td>
+                        <td>{{ entry.class_name }}</td>
+                        <td>{{ entry.team }}</td>
+                        <td>{{ entry.points }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
